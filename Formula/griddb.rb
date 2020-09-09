@@ -1,5 +1,3 @@
-require "formula"
-
 class Griddb < Formula
   desc "Internet file retriever"
   homepage "https://github.com/tungduong97/homebrew-tools"
@@ -19,5 +17,4 @@ class Griddb < Formula
   test do
     system "#{bin}/griddb", "--sysinfo"
   end
-
 end
