@@ -7,7 +7,6 @@ class Griddb < Formula
   version "1.0.0"
   sha256 "236c275a317947bb4595ac50cfc52d54ebc875ab0e5cc083f0196d921af80108"
 
-
   depends_on "autoconf"
   depends_on "automake"
   depends_on "libtool"
@@ -18,7 +17,7 @@ class Griddb < Formula
   end
 
   test do
-    assert_match "griddb version 1.0.0", shell_output("#{bin}/griddb -v", 2)
+    system "#{bin}/griddb", "--sysinfo"
   end
 
 end
