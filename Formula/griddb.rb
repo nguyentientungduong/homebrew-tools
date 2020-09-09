@@ -15,6 +15,6 @@ class Griddb < Formula
   end
 
   test do
-    assert_match "OK", shell_output("#{bin}/griddb build-griddb input.griddb")
+    system bin/"griddb", "-O", "/dev/null", "https://google.com"
   end
 end
