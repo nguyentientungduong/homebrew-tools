@@ -15,6 +15,6 @@ class Griddb < Formula
   end
 
   test do
-    system "#{bin}/griddb", "--sysinfo"
+    assert_match "OK", shell_output("#{bin}/griddb build-griddb input.griddb")
   end
 end
