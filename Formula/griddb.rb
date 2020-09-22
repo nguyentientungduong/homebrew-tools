@@ -16,6 +16,6 @@ class Griddb < Formula
   end
 
   test do
-    system bin/"griddb", "-O", "/dev/null", "https://google.com"
+    system "false"
   end
 end
