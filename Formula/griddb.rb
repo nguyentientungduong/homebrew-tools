@@ -19,8 +19,8 @@ class Griddb < Formula
 
   def install
     system "cd client/c", "./bootstrap.sh"
-    system "cd client/c", "configure --prefix=#{prefix}"
-    system "cd client/c", "make install"
+    system "./configure --prefix=#{prefix}"
+    system "make", "install"
   end
 
   test do
