@@ -23,20 +23,21 @@ class Griddb < Formula
   end
 
   test do
+    system "gcc #{prefix}/sample1.c -lgridstore -o #{prefix}/sample1"
     # Create two dummy files
-    (testpath/"file1").write "foo\nbar\nqux"
-    (testpath/"file2").write "bar\nabc"
+    #(testpath/"file1").write "foo\nbar\nqux"
+    #(testpath/"file2").write "bar\nabc"
 
     # Ensure `match bar` finds both files
-    assert_match "file1_ 2  bar\n***\nfile2_ 1  bar",
+    #assert_match "file1_ 2  bar\n***\nfile2_ 1  bar",
       #shell_output("#{bin}/griddb bar")
-      shell_output("gcc #{prefix}/sample1.c -lgridstore")
+      #shell_output("gcc #{prefix}/sample1.c -lgridstore -o #{prefix}/sample1")
 
     # Ensure `match abc` finds the second file
-    assert_match "file2_ 2  abc", shell_output("#{bin}/griddb abc")
+    #assert_match "file2_ 2  abc", shell_output("#{bin}/griddb abc")
 
     # Ensure `match idontmatchanything` doesn’t match any of the files
-    assert_not_match(/file[12]/,
-      shell_output("#{bin}/griddb idontmatchanything"))
+    #assert_not_match(/file[12]/,
+    # shell_output("#{bin}/griddb idontmatchanything"))
   end
 end
