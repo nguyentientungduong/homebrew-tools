@@ -23,7 +23,7 @@ class Griddb < Formula
   end
 
   test do
-    system "gcc -I#{prefix}/include -L#{prefix}/lib #{prefix}/sample1.c -o #{prefix}/sample1"
+    system "gcc #{prefix}/sample1.c -lgridstore -o #{prefix}/sample1"
     # Create two dummy files
     #(testpath/"file1").write "foo\nbar\nqux"
     #(testpath/"file2").write "bar\nabc"
