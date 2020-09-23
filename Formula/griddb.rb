@@ -4,7 +4,7 @@ class Griddb < Formula
   url "https://github.com/tungduong97/homebrew-tools/files/5261144/nttd.tar.gz"
   version "1.0.0"
   sha256 "4340de315795d3ef57e8423170245e066d1150f75ebffe523ec1533976ad9d2c"
-  license "YMH"
+  #license "YMH"
 
   depends_on "autoconf"
   depends_on "automake"
