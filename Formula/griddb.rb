@@ -29,7 +29,8 @@ class Griddb < Formula
 
     # Ensure `match bar` finds both files
     assert_match "file1_ 2  bar\n***\nfile2_ 1  bar",
-      shell_output("#{bin}/griddb bar")
+      #shell_output("#{bin}/griddb bar")
+      shell_output("gcc #/sample1.c -lgridstore")
 
     # Ensure `match abc` finds the second file
     assert_match "file2_ 2  abc", shell_output("#{bin}/griddb abc")
