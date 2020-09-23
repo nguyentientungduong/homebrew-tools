@@ -20,7 +20,7 @@ class Griddb < Formula
   depends_on "llvm"
 
   def install
-    system "Dir client/c"
+    system "cd client/c"
     system "./bootstrap.sh"
     system "configure --prefix=#{prefix}"
     system "make", " install"
