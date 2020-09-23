@@ -7,8 +7,6 @@ class Griddb < Formula
   license "YMH"
   
   bottle do
-    cellar :any_skip_relocation
-    rebuild 1
     sha256 "cf7e64a4a702db6667582d6a8d83107b67d1457a623fbe04426d9702023612fa" => :catalina
     #sha256 "199d0fa0c97e376933c8cca82e44503b36f610f7edb2170e6a1e7e7491c82017" => :mojave
     #sha256 "c210ec1143b73616108891c3cefaa31754c5bd5fda0222e2e3266035488a1353" => :high_sierra
@@ -20,10 +18,9 @@ class Griddb < Formula
   depends_on "llvm"
 
   def install
-    system "cd client/c"
-    system "./bootstrap.sh"
-    system "configure --prefix=#{prefix}"
-    system "make", " install"
+    system "cd client/c", "./bootstrap.sh"
+    system "cd client/c", "configure --prefix=#{prefix}"
+    system "cd client/c", "make install"
   end
 
   test do
