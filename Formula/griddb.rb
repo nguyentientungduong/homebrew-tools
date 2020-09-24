@@ -2,7 +2,7 @@ class Griddb < Formula
   desc "Nguyen Tien Tung Duong"
   homepage "https://github.com/tungduong97"
   url "https://github.com/tungduong97/homebrew-tools/files/5261144/nttd.tar.gz"
-  version "1.0.0"
+  version "4.5.0"
   sha256 "4340de315795d3ef57e8423170245e066d1150f75ebffe523ec1533976ad9d2c"
   license "YMH"
   
@@ -19,12 +19,14 @@ class Griddb < Formula
   depends_on "gcc"
 
   def install
-    system "cp client/c/sample/sample1.c #{prefix}"
+    #system "cp client/c/sample/sample1.c #{prefix}"
     system "cd client/c; ./bootstrap.sh;  ./configure --prefix=#{prefix}; make install"
   end
 
   test do
-    system "gcc", "#{prefix}/sample1.c", "-lgridstore", "-o", "sample1"
-    assert_equal "Hello, world!\n", `./sample1`
+    #system "gcc", "#{prefix}/sample1.c", "-lgridstore", "-o", "sample1"
+    #assert_equal "Hello, world!\n", `./sample1`
+    system "File.file?('#{lib}/libgridstore.0.dylib')"  
+    system "File.file?('#{include}/gridstore.h')"
   end
 end
