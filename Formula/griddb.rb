@@ -32,7 +32,7 @@ class Griddb < Formula
       end
     EOS
     system "ruby", "checkfile.rb"
-    assert_equal "file or directory exists", `ruby ./checkfile.rb`
+    assert_equal "file or directory exists\n", `ruby ./checkfile.rb`
 
     #system "gcc", "#{prefix}/sample1.c", "-lgridstore", "-o", "sample1"
     #assert_equal "Hello, world!\n", `./sample1`
