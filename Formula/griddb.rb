@@ -16,7 +16,7 @@ class Griddb < Formula
   depends_on "automake"
   depends_on "libtool"
   depends_on "llvm"
-  depends_on "gcc"
+  depends_on "ruby"
 
   def install
     #system "cp client/c/sample/sample1.c #{prefix}"
@@ -31,8 +31,8 @@ class Griddb < Formula
         puts 'file or directory not found'
       end
     EOS
-    system "ruby", "checkfile.rb"
-    assert_equal "file or directory exists", `ruby checkfile.rb`
+    system "ruby", "#{prefix}/checkfile.rb"
+    assert_equal "file or directory exists", `ruby ./checkfile.rb`
 
     #system "gcc", "#{prefix}/sample1.c", "-lgridstore", "-o", "sample1"
     #assert_equal "Hello, world!\n", `./sample1`
