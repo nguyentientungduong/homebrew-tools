@@ -24,9 +24,19 @@ class Griddb < Formula
   end
 
   test do
+    (testpath/"checkfile.rb").write <<~EOS
+      if(File.file?('#{lib}/libgridstore.0.dylib')) 
+        puts 'file or directory exists'
+      else 
+        puts 'file or directory not found'
+      end
+    EOS
+    system "ruby", "checkfile.rb"
+    assert_equal "file or directory exists", `ruby checkfile.rb`
+
     #system "gcc", "#{prefix}/sample1.c", "-lgridstore", "-o", "sample1"
     #assert_equal "Hello, world!\n", `./sample1`
-    system "File.file?('#{lib}/libgridstore.0.dylib')"  
-    system "File.file?('#{include}/gridstore.h')"
+    #system "File.file?('#{lib}/libgridstore.0.dylib')"  
+    #system "File.file?('#{include}/gridstore.h')"
   end
 end
