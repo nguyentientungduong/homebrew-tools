@@ -16,7 +16,7 @@ class Griddb < Formula
   depends_on "automake"
   depends_on "libtool"
   depends_on "llvm"
-  depends_on "gcc"
+  #depends_on "gcc"
   #depends_on "ruby"
 
   def install
