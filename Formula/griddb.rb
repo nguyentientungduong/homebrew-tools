@@ -16,7 +16,8 @@ class Griddb < Formula
   depends_on "automake"
   depends_on "libtool"
   depends_on "llvm"
-  depends_on "ruby"
+  depends_on "gcc"
+  #depends_on "ruby"
 
   def install
     #system "cp client/c/sample/sample1.c #{prefix}"
@@ -24,32 +25,39 @@ class Griddb < Formula
   end
 
   test do
-    (testpath/"checkfilecompile.rb").write <<~EOS
-      if(File.file?('#{lib}/libgridstore.0.dylib')) 
-        puts 'file or directory exists'
-      else 
-        puts 'file or directory not found'
-      end
+    #(testpath/"checkfilecompile.rb").write <<~EOS
+      #if(File.file?('#{lib}/libgridstore.0.dylib')) 
+        #puts 'file or directory exists'
+      #else 
+        #puts 'file or directory not found'
+      #end
+    #EOS
+    #system "ruby", "checkfilecompile.rb"
+    #assert_equal "file or directory exists\n", `ruby ./checkfilecompile.rb`
+    #system "echo", "Check system compile successful !"
+    
+    #(testpath/"checkfileheader.rb").write <<~EOS
+      #if(File.file?('#{include}/gridstore.h')) 
+        #puts 'file or directory exists'
+      #else 
+        #puts 'file or directory not found'
+      #end
+    #EOS
+    #system "ruby", "checkfileheader.rb"
+    #assert_equal "file or directory exists\n", `ruby ./checkfileheader.rb`
+    #system "echo", "Check system header successful !"
+
+    (testpath/"sample.c").write <<~EOS
+      #include "gridstore.h"
+      #include <stdio.h>
+      void main(int argc, char *argv[])
+      {
+        GSGridStoreFactory* p = gsGetDefaultFactory();
+        if (p != NULL) printf("Get Default Factory Success");
+      }
     EOS
-    system "ruby", "checkfilecompile.rb"
-    assert_equal "file or directory exists\n", `ruby ./checkfilecompile.rb`
-    system "echo", "Check system compile successful !"
-    
-    (testpath/"checkfileheader.rb").write <<~EOS
-      if(File.file?('#{include}/gridstore.h')) 
-        puts 'file or directory exists'
-      else 
-        puts 'file or directory not found'
-      end
-    EOS
-    system "ruby", "checkfileheader.rb"
-    assert_equal "file or directory exists\n", `ruby ./checkfileheader.rb`
-    system "echo", "Check system header successful !"
-    
-    
-    #system "gcc", "#{prefix}/sample1.c", "-lgridstore", "-o", "sample1"
-    #assert_equal "Hello, world!\n", `./sample1`
-    #system "File.file?('#{lib}/libgridstore.0.dylib')"  
-    #system "File.file?('#{include}/gridstore.h')"
+    system "gcc", "-I#{include}", "-L#{lib}", "sample.c", "-lgridstore", "-o", "sample"
+    assert_equal "Get Default Factory Success\n", `./sample`
+
   end
 end
