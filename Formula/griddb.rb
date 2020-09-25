@@ -50,10 +50,11 @@ class Griddb < Formula
     (testpath/"sample.c").write <<~EOS
       #include "gridstore.h"
       #include <stdio.h>
-      void main(int argc, char *argv[])
+      int main(int argc, char *argv[])
       {
         GSGridStoreFactory* p = gsGetDefaultFactory();
         if (p != NULL) printf("Get Default Factory Success");
+        return 0;
       }
     EOS
     system "gcc", "-I#{include}", "-L#{lib}", "sample.c", "-lgridstore", "-o", "sample"
