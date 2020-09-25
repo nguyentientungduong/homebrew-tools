@@ -57,7 +57,7 @@ class Griddb < Formula
       }
     EOS
     system "gcc", "-I#{include}", "-L#{lib}", "sample.c", "-lgridstore", "-o", "sample"
-    assert_equal "Get Default Factory Success\n", `./sample`
+    assert_equal "Get Default Factory Success", `./sample`
 
   end
 end
