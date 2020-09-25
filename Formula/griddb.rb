@@ -1,10 +1,10 @@
 class Griddb < Formula
   desc "Nguyen Tien Tung Duong"
   homepage "https://github.com/tungduong97"
-  url "https://github.com/tungduong97/homebrew-tools/files/5261144/nttd.tar.gz"
-  version "4.5.0"
-  sha256 "4340de315795d3ef57e8423170245e066d1150f75ebffe523ec1533976ad9d2c"
-  license "YMH"
+  url "https://github.com/griddb/c_client/archive/v4.5.1.tar.gz"
+  version "4.5.1"
+  sha256 "bf9eaca4df14bd3badc662dc3a6db5cdcae5b35e9e50b48427c9b9dd02bc116e"
+  license "Apache-2.0"
   
   #bottle do
     #sha256 "cf7e64a4a702db6667582d6a8d83107b67d1457a623fbe04426d9702023612fa" => :catalina
