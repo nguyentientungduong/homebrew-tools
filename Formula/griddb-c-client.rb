@@ -15,7 +15,8 @@ class GriddbCClient < Formula
 
   def install
     #system "cd client/c; ./bootstrap.sh; ./configure --prefix=#{prefix}; make install"
-    system "cd client/c"
+    Dir.chdir('client/c')
+    #system "cd client/c"
     system "./bootstrap.sh"
     system "./configure --prefix=#{prefix}"
     system "make", "install"
