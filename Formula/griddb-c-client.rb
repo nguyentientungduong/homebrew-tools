@@ -6,7 +6,7 @@ class GriddbCClient < Formula
   sha256 "bf9eaca4df14bd3badc662dc3a6db5cdcae5b35e9e50b48427c9b9dd02bc116e"
   license "Apache-2.0"
 
-  #bottle :unneeded
+  bottle :unneeded
 
   depends_on "autoconf"
   depends_on "automake"
@@ -14,12 +14,12 @@ class GriddbCClient < Formula
   depends_on "llvm"
 
   def install
-    #system "cd client/c; ./bootstrap.sh; ./configure --prefix=#{prefix}; make install"
-    (buildpath/"src/github.com/griddb/c_client").install buildpath.children
-    cd "src/github.com/griddb/c_client/client/c" do
-      ./bootstrap.sh
-      ./configure --prefix=#{prefix}
-      make install
+    system "cd client/c; ./bootstrap.sh; ./configure --prefix=#{prefix}; make install"
+    #(buildpath/"src/github.com/griddb/c_client").install buildpath.children
+    #cd "src/github.com/griddb/c_client/client/c" do
+      #./bootstrap.sh
+      #./configure --prefix=#{prefix}
+      #make install
   end
 
   test do
