@@ -15,11 +15,11 @@ class GriddbCClient < Formula
 
   def install
     #system "cd client/c; ./bootstrap.sh; ./configure --prefix=#{prefix}; make install"
-    (buildpath/"src/github.com/griddb/c_client").install buildpath.children
-    cd "src/github.com/griddb/c_client/client/c" do
-      ./bootstrap.sh
-      ./configure --prefix=#{prefix}
-      make install
+    system "cd client/c"
+    system "./bootstrap.sh"
+    system "./configure --prefix=#{prefix}"
+    system "make", "install"
+    
   end
 
   test do
