@@ -9,7 +9,6 @@ class GriddbCClient < Formula
 
   depends_on "autoconf"
   depends_on "automake"
-  depends_on "gcc@7"
   depends_on "libtool"
   depends_on "llvm"
 
@@ -31,7 +30,7 @@ class GriddbCClient < Formula
         return 0;
       }
     EOS
-    system ENV.cc, "-I#{include}", "-L#{lib}", "sample.c", "-lgridstore", "-o", "sample"
+    system "/usr/bin/gcc", "-I#{include}", "-L#{lib}", "sample.c", "-lgridstore", "-o", "sample"
     assert_equal "Get default GSGridStoreFactory instance", './sample'
   end
 end
