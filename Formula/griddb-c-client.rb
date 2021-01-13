@@ -30,10 +30,7 @@ class GriddbCClient < Formula
         return 0;
       }
     EOS
-    def to_s
-      "#{ENV.cc}", "-I#{include}", "-L#{lib}", "sample.c", "-lgridstore", "-o", "sample"
-    end
-    system to_s
+    system "#{ENV.cc} -I#{include} -L#{lib} sample.c -lgridstore -o sample"
     assert_equal "Get default GSGridStoreFactory instance", `./sample`
   end
 end
