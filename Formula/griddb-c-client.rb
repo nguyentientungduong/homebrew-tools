@@ -32,6 +32,6 @@ class GriddbCClient < Formula
       }
     EOS
     system ENV["CC"], "-I#{include}", "-L#{lib}", "sample.c", "-lgridstore", "-o", "sample"
-    assert_equal "Get default GSGridStoreFactory instance", "./sample"
+    assert_equal "Get default GSGridStoreFactory instance", './sample'
   end
 end
