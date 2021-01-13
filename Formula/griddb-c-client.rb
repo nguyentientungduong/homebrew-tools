@@ -1,8 +1,7 @@
 class GriddbCClient < Formula
-  desc "The GridDB C Client provides a C interface for GridDB"
+  desc "Library For GridDB C Client provides a C interface for GridDB"
   homepage "https://github.com/griddb"
   url "https://github.com/griddb/c_client/archive/v4.5.1.tar.gz"
-  version "4.5.1"
   sha256 "bf9eaca4df14bd3badc662dc3a6db5cdcae5b35e9e50b48427c9b9dd02bc116e"
   license "Apache-2.0"
 
@@ -10,17 +9,14 @@ class GriddbCClient < Formula
 
   depends_on "autoconf"
   depends_on "automake"
+  depends_on "gcc@7"
   depends_on "libtool"
   depends_on "llvm"
 
   def install
-    #system "cd client/c; ./bootstrap.sh; ./configure --prefix=#{prefix}; make install"
-    Dir.chdir('client/c')
-    #system "cd client/c"
-    system "./bootstrap.sh"
-    system "./configure --prefix=#{prefix}"
+    Dir.chdir("client/c")
+    system "./bootstrap.sh" && "./configure --prefix=#{prefix}"
     system "make", "install"
-    
   end
 
   test do
@@ -34,7 +30,7 @@ class GriddbCClient < Formula
         return 0;
       }
     EOS
-    system "gcc", "-I#{include}", "-L#{lib}", "sample.c", "-lgridstore", "-o", "sample"
-    assert_equal "Get default GSGridStoreFactory instance", `./sample`
+    system ENV["CC"], "-I#{include}", "-L#{lib}", "sample.c", "-lgridstore", "-o", "sample"
+    assert_equal "Get default GSGridStoreFactory instance", "./sample"
   end
 end
