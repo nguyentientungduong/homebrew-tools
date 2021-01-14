@@ -23,11 +23,12 @@ class GriddbCClient < Formula
     (testpath/"sample.c").write <<~EOS
       #include "gridstore.h"
       #include <stdio.h>
-      void main() {
+      int main() {
           GSGridStoreFactory* p = gsGetDefaultFactory();
           if (p != NULL) {
               printf("Get default GSGridStoreFactory instance");
           }
+          return 0;
       }
     EOS
     system ENV["CC"], "-I#{include}", "-L#{lib}", "sample.c", "-lgridstore", "-o", "sample"
