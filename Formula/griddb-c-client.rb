@@ -3,11 +3,7 @@ class GriddbCClient < Formula
   homepage "https://github.com/griddb/c_client"
   url "https://github.com/griddb/c_client/archive/v4.5.1.tar.gz"
   sha256 "bf9eaca4df14bd3badc662dc3a6db5cdcae5b35e9e50b48427c9b9dd02bc116e"
-  license "Apache-2.0"
-
-  bottle do
-    sha256 catalina: "b7710c8b0af7a9c0c319b2e417a63d59e7978a6a7be560e172719a8e4a9b56dc"
-  end
+  license "Apache-2"
 
   depends_on "autoconf"
   depends_on "automake"
