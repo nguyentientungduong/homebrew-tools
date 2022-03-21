@@ -12,7 +12,7 @@ class GriddbCClient < Formula
 
   def install
     cd "client/c" do
-      touch AUTHORS COPYING ChangeLog INSTALL NEWS README
+      system "touch", "AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README"
       system "glibtoolize -c"
       system "aclocal"
       system "autoconf"
