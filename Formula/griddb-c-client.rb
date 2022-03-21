@@ -12,11 +12,11 @@ class GriddbCClient < Formula
 
   def install
     cd "client/c" do
-      system "touch", "AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README"
-      system "glibtoolize -c"
+      touch "AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README"
+      system "glibtoolize", "-c"
       system "aclocal"
       system "autoconf"
-      system "automake -a -c"
+      system "automake", "-a", "-c"
       system "./configure", "--prefix=#{prefix}"
       system "make", "install"
     end
