@@ -5,15 +5,16 @@ class GriddbCClient < Formula
   sha256 "bf9eaca4df14bd3badc662dc3a6db5cdcae5b35e9e50b48427c9b9dd02bc116e"
   license "Apache-2.0"
 
-  bottle :unneeded
+  bottle do
+    sha256 catalina: "924afbbc16549d8c2b80544fd03104ff8c17a4b1460238e3ed17a1313391a2af"
+  end
 
   depends_on "autoconf"
   depends_on "automake"
   depends_on "libtool"
   uses_from_macos "llvm"
 
-  def install
-    Dir.chdir("client/c")
+  cd "client/c" do
     system "./bootstrap.sh"
     system "./configure", "--prefix=#{prefix}"
     system "make", "install"
