@@ -6,7 +6,7 @@ class GriddbCClient < Formula
   license "Apache-2.0"
 
   bottle do
-    sha256 catalina: "924afbbc16549d8c2b80544fd03104ff8c17a4b1460238e3ed17a1313391a2af"
+    sha256 catalina: "b7710c8b0af7a9c0c319b2e417a63d59e7978a6a7be560e172719a8e4a9b56dc"
   end
 
   depends_on "autoconf"
