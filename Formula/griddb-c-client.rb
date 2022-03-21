@@ -5,8 +5,6 @@ class GriddbCClient < Formula
   sha256 "bf9eaca4df14bd3badc662dc3a6db5cdcae5b35e9e50b48427c9b9dd02bc116e"
   license "Apache-2.0"
 
-  bottle :unneeded
-
   depends_on "autoconf"
   depends_on "automake"
   depends_on "libtool"
@@ -14,7 +12,10 @@ class GriddbCClient < Formula
 
   def install
     cd "client/c" do
-      system "./bootstrap.sh"
+      system "glibtoolize -c"
+      system "aclocal"
+      system "autoconf"
+      system "automake -a -c"
       system "./configure", "--prefix=#{prefix}"
       system "make", "install"
     end
