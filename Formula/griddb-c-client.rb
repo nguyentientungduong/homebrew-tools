@@ -14,10 +14,12 @@ class GriddbCClient < Formula
   depends_on "libtool"
   uses_from_macos "llvm"
 
-  cd "client/c" do
-    system "./bootstrap.sh"
-    system "./configure", "--prefix=#{prefix}"
-    system "make", "install"
+  def install
+    cd "client/c" do
+      system "./bootstrap.sh"
+      system "./configure", "--prefix=#{prefix}"
+      system "make", "install"
+    end
   end
 
   test do
