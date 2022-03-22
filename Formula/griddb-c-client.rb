@@ -1,9 +1,10 @@
 class GriddbCClient < Formula
-  desc "Library for GridDB C Client provides a C interface for GridDB"
-  homepage "https://github.com/griddb/c_client"
+  desc "The GridDB C Client provides a C interface for GridDB"
+  homepage "https://github.com/griddb"
   url "https://github.com/griddb/c_client/archive/v4.5.1.tar.gz"
+  version "4.5.1"
   sha256 "bf9eaca4df14bd3badc662dc3a6db5cdcae5b35e9e50b48427c9b9dd02bc116e"
-  license "Apache-2.0"
+  license "Apache-2.0
 
   depends_on "autoconf"
   depends_on "automake"
