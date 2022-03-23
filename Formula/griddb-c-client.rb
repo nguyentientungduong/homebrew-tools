@@ -5,9 +5,9 @@ class GriddbCClient < Formula
   sha256 "bf9eaca4df14bd3badc662dc3a6db5cdcae5b35e9e50b48427c9b9dd02bc116e"
   license "Apache-2.0"
 
-  depends_on "autoconf"
-  depends_on "automake"
-  depends_on "libtool"
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+  depends_on "libtool" => :build
   uses_from_macos "llvm"
 
   def install
