@@ -12,11 +12,15 @@ class GriddbCClient < Formula
   uses_from_macos "llvm"
 
   def install
-    Dir.chdir('client/c')
-    system "./bootstrap.sh"
-    system "./configure --prefix=#{prefix}"
-    system "make", "install"
-  end
+    cd "client/c" do
+      touch "AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README"
+      system "glibtoolize", "-c"
+      system "aclocal"
+      system "autoconf"
+      system "automake", "-a", "-c"
+      system "./configure", "--prefix=#{prefix}"
+      system "make", "install"
+    end
 
   test do
     (testpath/"sample.c").write <<~EOS
