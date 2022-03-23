@@ -13,7 +13,7 @@ class GriddbCClient < Formula
 
   def install
     cd "client/c" do
-      touch "AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README"
+      system "touch", "AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README"
       system "glibtoolize", "-c"
       system "aclocal"
       system "autoconf"
@@ -21,6 +21,7 @@ class GriddbCClient < Formula
       system "./configure", "--prefix=#{prefix}"
       system "make", "install"
     end
+  end
 
   test do
     (testpath/"sample.c").write <<~EOS
