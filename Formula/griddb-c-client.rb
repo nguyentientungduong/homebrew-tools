@@ -4,7 +4,7 @@ class GriddbCClient < Formula
   url "https://github.com/griddb/c_client/archive/v4.5.1.tar.gz"
   version "4.5.1"
   sha256 "bf9eaca4df14bd3badc662dc3a6db5cdcae5b35e9e50b48427c9b9dd02bc116e"
-  license "Apache-2.0
+  license "Apache-2.0"
 
   depends_on "autoconf"
   depends_on "automake"
@@ -12,20 +12,16 @@ class GriddbCClient < Formula
   uses_from_macos "llvm"
 
   def install
-    Dir.chdir('client/c')
-    system "./bootstrap.sh"
-    system "./configure --prefix=#{prefix}"
-    system "make", "install"
+    cd "client/c" do
+      touch "AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README"
+      system "glibtoolize", "-c"
+      system "aclocal"
+      system "autoconf"
+      system "automake", "-a", "-c"
+      system "./configure", "--prefix=#{prefix}"
+      system "make", "install"
+    end
   end
-    #cd "client/c" do
-     # touch "AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README"
-     # system "glibtoolize", "-c"
-     # system "aclocal"
-     # system "autoconf"
-     # system "automake", "-a", "-c"
-     # system "./configure", "--prefix=#{prefix}"
-     # system "make", "install"
-    #end
 
   test do
     (testpath/"sample.c").write <<~EOS
