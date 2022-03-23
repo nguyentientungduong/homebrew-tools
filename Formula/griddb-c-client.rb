@@ -5,7 +5,6 @@ class GriddbCClient < Formula
   sha256 "bf9eaca4df14bd3badc662dc3a6db5cdcae5b35e9e50b48427c9b9dd02bc116e"
   license "Apache-2.0"
 
-  require 'fileutils'
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
@@ -13,8 +12,12 @@ class GriddbCClient < Formula
 
   def install
     cd "client/c" do
-      FileUtils.touch('AUTHORS', 'COPYING', 'ChangeLog', 'INSTALL', 'NEWS', 'README')
-      #system "touch", "AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README"
+      touch "AUTHORS"
+      touch "COPYING"
+      touch "ChangeLog"
+      touch "INSTALL"
+      touch "NEWS"
+      touch "README"
       system "glibtoolize", "-c"
       system "aclocal"
       system "autoconf"
