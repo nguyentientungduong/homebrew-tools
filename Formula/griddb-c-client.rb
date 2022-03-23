@@ -13,7 +13,7 @@ class GriddbCClient < Formula
 
   def install
     cd "client/c" do
-      FileUtils.touch("AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README")
+      FileUtils.touch('AUTHORS', 'COPYING', 'ChangeLog', 'INSTALL', 'NEWS', 'README')
       #system "touch", "AUTHORS", "COPYING", "ChangeLog", "INSTALL", "NEWS", "README"
       system "glibtoolize", "-c"
       system "aclocal"
