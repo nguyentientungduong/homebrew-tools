@@ -9,7 +9,7 @@ class GriddbCClient < Formula
   depends_on "autoconf"
   depends_on "automake"
   depends_on "libtool"
-  depends_on "llvm"
+  uses_from_macos "llvm"
 
   def install
     Dir.chdir('client/c')
